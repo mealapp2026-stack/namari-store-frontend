@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white font-sans text-slate-700 antialiased; }
+  button, a, input, select, textarea { @apply outline-none; }
+  ::selection { @apply bg-cyan/30 text-ink; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-navy hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-accent { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-cyan px-5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-slate-300 hover:bg-slate-50; }
+  .input { @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-slate-400 focus:border-cyan focus:ring-4 focus:ring-cyan/10; }
+  .label { @apply mb-2 block text-sm font-semibold text-ink; }
+  .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.22em] text-cyan; }
+}
