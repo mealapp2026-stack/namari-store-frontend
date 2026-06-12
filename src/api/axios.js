@@ -1,7 +1,24 @@
 import axios from "axios";
 
+const normalizeBaseUrl = (value) => {
+  const fallback = "http://localhost:5001/api";
+  const normalized = (value || fallback)
+    .trim()
+    .replace(/^(['"])(.*)\1$/, "$2")
+    .replace(/\/+$/, "");
+
+  try {
+    return new URL(normalized).toString().replace(/\/$/, "");
+  } catch {
+    console.error(
+      "Invalid VITE_API_URL. Use a full URL without quotes, for example https://your-api.onrender.com/api",
+    );
+    return fallback;
+  }
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5001/api",
+  baseURL: normalizeBaseUrl(import.meta.env.VITE_API_URL),
   timeout: 15000,
 });
 
